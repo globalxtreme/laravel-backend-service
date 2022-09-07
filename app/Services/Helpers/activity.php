@@ -12,13 +12,13 @@ if (!function_exists("activity")) {
      */
     function activity(string|null $log = null): SaveActivity
     {
-        $service = new SaveActivity(new Activity);
+        $activity = new SaveActivity(new Activity);
 
         if ($log) {
-            $service->setDescription($log);
+            $activity->setDescription($log);
         }
 
-        return $service;
+        return $activity;
     }
 
 }

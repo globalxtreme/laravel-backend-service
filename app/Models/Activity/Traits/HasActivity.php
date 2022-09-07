@@ -7,8 +7,24 @@ use Illuminate\Support\Str;
 
 trait HasActivity
 {
-    protected $activityType;
-    protected $activityAction;
+    /**
+     * @var string
+     */
+    protected $activityType = '';
+
+    /**
+     * @var string
+     */
+    protected $activitySubType = '';
+
+    /**
+     * @var string
+     */
+    protected $activityAction = '';
+
+    /**
+     * @var array
+     */
     protected $activityProperties = [
         'old' => null,
         'new' => null
@@ -34,6 +50,7 @@ trait HasActivity
         }
 
         return activity()->setType($type)
+            ->setSubType($this->activitySubType)
             ->setAction($this->activityAction)
             ->setReference($this)
             ->setProperties($this->activityProperties)
@@ -77,7 +94,7 @@ trait HasActivity
     }
 
 
-    /** FUNCTIONS */
+    /** --- FUNCTIONS --- */
 
     private function processGettingAttributes(string $action, string|null $customMethod = null)
     {

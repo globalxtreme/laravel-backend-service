@@ -37,9 +37,13 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->routes(function () {
 
-            Route::prefix(config('base.conf.prefix'))
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+            Route::prefix(config('base.conf.prefix.web'))
+                ->namespace($this->namespace . '\\' . config('base.conf.namespace.web'))
+                ->group(base_path('routes/web.php'));
+
+            Route::prefix(config('base.conf.prefix.mobile'))
+                ->namespace($this->namespace . '\\' . config('base.conf.namespace.mobile'))
+                ->group(base_path('routes/mobile.php'));
 
         });
     }

@@ -23,7 +23,7 @@ class BaseModel extends Model
     public $numberPrefix = 'GX';
 
 
-    /** SCOPES */
+    /** --- SCOPES --- */
 
     public function scopeOfDate($query, $key = 'date', $fromDate = null, $toDate = null)
     {
@@ -37,7 +37,7 @@ class BaseModel extends Model
     }
 
 
-    /** FUNCTIONS */
+    /** --- FUNCTIONS --- */
 
     public function hasSearch($request)
     {

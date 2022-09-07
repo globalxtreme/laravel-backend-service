@@ -2,12 +2,16 @@
 
 namespace App\Services\Constant\Activity;
 
-class ActivityType
+use App\Services\Constant\BaseCodeName;
+
+class ActivityType extends BaseCodeName
 {
     const GENERAL = 'general';
+    const COMPONENT = 'component';
 
     const OPTION = [
-        self::GENERAL
+        self::GENERAL,
+        self::COMPONENT,
     ];
 
 }

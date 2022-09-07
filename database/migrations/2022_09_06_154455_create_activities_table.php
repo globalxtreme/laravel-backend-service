@@ -1,11 +1,15 @@
 <?php
 
+use Database\Migrations\Traits\HasCustomMigration;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    use HasCustomMigration;
+
+
     /**
      * Run the migrations.
      *
@@ -15,9 +19,19 @@ return new class extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->id();
-            $table->timestamp('createdAt')->nullable();
-            $table->timestamp('updatedAt')->nullable();
-            $table->softDeletes('deletedAt');
+            $table->string('type');
+            $table->string('subType')->nullable();
+            $table->string('action');
+            $table->text('description')->nullable();
+            $table->foreignId('reference')->nullable();
+            $table->string('referenceType')->nullable();
+            $table->char('causedBy')->nullable();
+            $table->string('causedByName')->nullable();
+            $table->string('url')->nullable();
+            $table->json('properties')->nullable();
+
+            $this->getDefaultTimestamps($table);
+            $this->getDefaultTimestamps($table);
         });
     }
 

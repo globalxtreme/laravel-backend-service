@@ -1,10 +1,10 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Services\Parser\Component;
 
 use GlobalXtreme\Parser\BaseParser;
 
-class {{ class }} extends BaseParser
+class ComponentParser extends BaseParser
 {
     /**
      * @param $data
@@ -17,7 +17,9 @@ class {{ class }} extends BaseParser
             return null;
         }
 
-        return parent::first($data);
+        return $data->only('id', 'name') + [
+                'createdAt' => $data->createdAt?->format('d/m/Y H:i')
+            ];
     }
 
 }

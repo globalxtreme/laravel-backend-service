@@ -1,15 +1,16 @@
 <?php
 
-namespace {{ namespace }};
+namespace App\Models\Component\Traits;
 
 use App\Models\Activity\Traits\HasActivity;
 use App\Services\Constant\Activity\ActivityType;
+use App\Services\Parser\Component\ComponentParser;
 
-trait {{ class }}
+trait HasActivityComponentProperty
 {
     use HasActivity;
 
-    protected $activitySubType = '';
+    protected $activitySubType = 'media_origin';
 
 
     /**
@@ -17,7 +18,7 @@ trait {{ class }}
      */
     public function getActivityType(): string
     {
-        return ActivityType::GENERAL;
+        return ActivityType::COMPONENT;
     }
 
 
@@ -57,7 +58,7 @@ trait {{ class }}
     {
         $this->refresh();
 
-        return [];
+        return ComponentParser::first($this);
     }
 
 }

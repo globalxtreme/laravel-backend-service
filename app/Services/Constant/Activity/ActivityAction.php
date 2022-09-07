@@ -2,7 +2,9 @@
 
 namespace App\Services\Constant\Activity;
 
-class ActivityAction
+use App\Services\Constant\BaseCodeName;
+
+class ActivityAction extends BaseCodeName
 {
     const CREATE = 'create';
     const UPDATE = 'update';
