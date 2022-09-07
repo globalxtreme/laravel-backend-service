@@ -1,5 +1,5 @@
 {
-    "name": "globalxtreme/backend-service",
+    "name": "globalxtreme/laravel-backend-service",
     "type": "project",
     "description": "GlobalXtreme Default Backend Service",
     "keywords": ["framework", "laravel"],
