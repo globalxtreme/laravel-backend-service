@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Services\Number\Generator\NumberGenerator;
+
+class {{ class }} extends NumberGenerator
+{
+    //
+}

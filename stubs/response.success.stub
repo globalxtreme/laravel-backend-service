@@ -1,0 +1,11 @@
+<?php
+
+namespace {{ namespace }};
+
+use GlobalXtreme\Response\Constant\ResponseConstant;
+
+class Success extends ResponseConstant
+{
+    /** --- DEFAULT --- */
+    const DEFAULT = ['code' => 200, 'msg' => 'Action successfully'];
+}

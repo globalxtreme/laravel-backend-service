@@ -1,0 +1,10 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ rootNamespace }}Services\Number\Contract\NumberGeneratorContract;
+
+interface {{ class }} extends NumberGeneratorContract
+{
+    //
+}

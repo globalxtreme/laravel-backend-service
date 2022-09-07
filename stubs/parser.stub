@@ -1,0 +1,42 @@
+<?php
+
+namespace {{ namespace }};
+
+use GlobalXtreme\Parser\BaseParser;
+
+class {{ class }} extends BaseParser
+{
+    /**
+     * @param $collections
+     *
+     * @return array|null
+     */
+    public static function get($collections)
+    {
+        if (!$collections || count($collections) == 0) {
+            return null;
+        }
+
+        $data = [];
+        foreach ($collections as $collection) {
+            $data[] = self::first($collection);
+        }
+
+        return $data;
+    }
+
+    /**
+     * @param $data
+     *
+     * @return array|null
+     */
+    public static function first($collection)
+    {
+        if (!$collection) {
+            return null;
+        }
+
+        return parent::first($collection);
+    }
+
+}

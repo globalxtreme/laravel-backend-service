@@ -1,0 +1,58 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Models\Activity\Traits\HasActivity;
+use App\Services\Constant\Activity\ActivityType;
+
+trait {{ class }}
+{
+    use HasActivity;
+
+
+    /**
+     * @return string
+     */
+    public function getActivityType(): string
+    {
+        return ActivityType::GENERAL;
+    }
+
+
+    /**
+     * @return array
+     */
+    public function getActivityPropertyCreate()
+    {
+        $this->refresh();
+
+        return [
+            'id' => $this->id
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getActivityPropertyUpdate()
+    {
+        $this->refresh();
+
+        return [
+            'id' => $this->id
+        ];
+    }
+
+    /**
+     * @return array
+     */
+    public function getActivityPropertyDelete()
+    {
+        $this->refresh();
+
+        return $this->only('id') + [
+                'deletedAt' => $this->deletedAt?->format('d/m/Y H:i')
+            ];
+    }
+
+}

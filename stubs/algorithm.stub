@@ -1,0 +1,61 @@
+<?php
+
+namespace {{ namespace }};
+
+use App\Algorithms\BaseAlgorithm;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class {{ class }} extends BaseAlgorithm
+{
+    /**
+     * @param Request $request
+     *
+     * @return mixed|JsonResponse
+     */
+    public function handleCreate(Request $request)
+    {
+        try {
+
+            return  success();
+
+        } catch (\Exception $exception) {
+            exception($exception);
+        }
+    }
+
+    /**
+     * @param Model $model
+     * @param Request $request
+     *
+     * @return mixed|JsonResponse
+     */
+    public function handleUpdate(Model $model, Request $request)
+    {
+        try {
+
+            return  success($model->fresh());
+
+        } catch (\Exception $exception) {
+            exception($exception);
+        }
+    }
+
+    /**
+     * @param Model $model
+     *
+     * @return mixed|JsonResponse
+     */
+    public function handleDelete(Model $model)
+    {
+        try {
+
+            return  success();
+
+        } catch (\Exception $exception) {
+            exception($exception);
+        }
+    }
+
+}
