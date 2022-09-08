@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Models\Activity\Traits;
+namespace App\Models\v1\Activity\Traits;
 
 use App\Services\Constant\Activity\ActivityType;
 use Illuminate\Support\Str;
+use function activity;
+use function now;
 
 trait HasActivity
 {

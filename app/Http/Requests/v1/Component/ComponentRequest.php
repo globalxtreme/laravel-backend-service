@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Component;
+namespace App\Http\Requests\v1\Component;
 
 use GlobalXtreme\Validation\Support\FormRequest;
 

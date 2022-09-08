@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\Activity;
+namespace App\Models\v1\Activity;
 
 use App\Models\BaseModel;
 use Illuminate\Database\Eloquent\Relations\MorphTo;

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models\Component\Traits;
+namespace App\Models\v1\Component\Traits;
 
-use App\Models\Activity\Traits\HasActivity;
+use App\Models\v1\Activity\Traits\HasActivity;
 use App\Services\Constant\Activity\ActivityType;
 use App\Services\Parser\Component\ComponentParser;
 

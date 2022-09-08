@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Algorithms\Component\Support;
+namespace App\Algorithms\v1\Component\Support;
 
 use App\Algorithms\BaseAlgorithm;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
