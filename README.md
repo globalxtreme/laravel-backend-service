@@ -6,7 +6,7 @@
 composer create-project globalxtreme/laravel-backend-service project
 ```
 
-### Configuration system in **config/base.conf.php**
+### Configuration system in config/base.conf.php
 
 ```php
 return [
