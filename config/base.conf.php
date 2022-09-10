@@ -23,8 +23,8 @@ return [
      | Base Prefix & Namespace
      |--------------------------------------------------------------------------
      |
-     | Set up base endpoint for web, mobile and third party (default)
-     | Set up base namespace controller for web, mobile and third party (default)
+     | Set up base endpoint for web, mobile and B2B (default)
+     | Set up base namespace controller for web, mobile and B2B (default)
      |
      */
 
@@ -34,7 +34,7 @@ return [
 
         'mobile' => env('BASE_MOBILE_PREFIX', 'api/mobile'),
 
-        'third_party' => env('BASE_THIRD_PARTY_PREFIX', 'api/third'),
+        'b2b' => env('BASE_B2B_PREFIX', 'api/b2b'),
 
     ],
 
@@ -44,7 +44,7 @@ return [
 
         'mobile' => env('BASE_MOBILE_NAMESPACE', 'Mobile'),
 
-        'third_party' => env('BASE_THIRD_PARTY_NAMESPACE', 'ThirdParty'),
+        'b2b' => env('BASE_B2B_NAMESPACE', 'B2B'),
 
     ]
 

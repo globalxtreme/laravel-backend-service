@@ -48,9 +48,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace . '\\' . config('base.conf.namespace.mobile'))
                 ->group(base_path('routes/mobile.php'));
 
-            Route::prefix(config('base.conf.prefix.third_party') . "/$version/$service")
-                ->namespace($this->namespace . '\\' . config('base.conf.namespace.third_party'))
-                ->group(base_path('routes/thirdParty.php'));
+            Route::prefix(config('base.conf.prefix.b2b') . "/$version/$service")
+                ->namespace($this->namespace . '\\' . config('base.conf.namespace.b2b'))
+                ->group(base_path('routes/b2b.php'));
 
         });
     }
