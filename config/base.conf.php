@@ -9,7 +9,7 @@ return [
      |
      | 1. Default version is v1. You can set up versioning in directories
      |    Algorithms, Controllers, Requests, Models and routes
-     | 2. Set your service name, using kebab case. Ex: customer-support, work-order
+     | 2. Set your service name for routing, using kebab case. Ex: customer-supports, work-orders
      |
      */
 
