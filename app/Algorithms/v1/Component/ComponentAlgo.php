@@ -8,20 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use function app;
-use function auth_user;
-use function exception;
-use function success;
 
 class ComponentAlgo extends ComponentBaseAlgorithm
 {
     /**
-     * @param Model $model
+     * @param $model
      * @param Request $request
      *
      * @return JsonResponse|mixed
      */
-    public function handleCreateBy(Model $model, Request $request)
+    public function handleCreateBy($model, Request $request)
     {
         try {
 
