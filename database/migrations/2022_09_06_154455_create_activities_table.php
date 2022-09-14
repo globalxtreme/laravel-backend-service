@@ -30,7 +30,6 @@ return new class extends Migration
             $table->string('url')->nullable();
             $table->json('properties')->nullable();
 
-            $this->getDefaultCreatedBy($table);
             $this->getDefaultTimestamps($table);
         });
     }
