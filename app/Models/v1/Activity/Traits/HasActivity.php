@@ -17,11 +17,6 @@ trait HasActivity
     /**
      * @var string
      */
-    protected $activitySubType = '';
-
-    /**
-     * @var string
-     */
     protected $activityAction = '';
 
     /**
@@ -38,6 +33,11 @@ trait HasActivity
      */
     abstract public function getActivityType(): string;
 
+    /**
+     * @return string
+     */
+    abstract public function getActivitySubType(): string;
+
 
     public function getActivityProperties()
     {
@@ -51,8 +51,13 @@ trait HasActivity
             $type = $this->getActivityType();
         }
 
+        $subType = '';
+        if (method_exists($this, "getActivitySubType")) {
+            $subType = $this->getActivitySubType();
+        }
+
         return activity()->setType($type)
-            ->setSubType($this->activitySubType)
+            ->setSubType($subType)
             ->setAction($this->activityAction)
             ->setReference($this)
             ->setProperties($this->activityProperties)

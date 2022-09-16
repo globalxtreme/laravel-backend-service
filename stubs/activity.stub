@@ -9,8 +9,6 @@ trait {{ class }}
 {
     use HasActivity;
 
-    protected $activitySubType = '';
-
 
     /**
      * @return string
@@ -18,6 +16,14 @@ trait {{ class }}
     public function getActivityType(): string
     {
         return ActivityType::GENERAL;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActivitySubType(): string
+    {
+        return '';
     }
 
 

@@ -10,8 +10,6 @@ trait HasActivityComponentProperty
 {
     use HasActivity;
 
-    protected $activitySubType = 'media_origin';
-
 
     /**
      * @return string
@@ -19,6 +17,14 @@ trait HasActivityComponentProperty
     public function getActivityType(): string
     {
         return ActivityType::COMPONENT;
+    }
+
+    /**
+     * @return string
+     */
+    public function getActivitySubType(): string
+    {
+        return '';
     }
 
 
