@@ -11,6 +11,8 @@ class BaseIDName
     ];
 
 
+    /** --- FUNCTIONS --- */
+
     /**
      * @param array|null $options
      *
@@ -38,6 +40,16 @@ class BaseIDName
     public static function display(int $id): string
     {
         return static::OPTION[$id];
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
+    public static function idName(int $id): array
+    {
+        return ['id' => $id, 'name' => static::OPTION[$id]];
     }
 
 }

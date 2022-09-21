@@ -3,6 +3,7 @@
 namespace App\Console\Commands\Generator;
 
 use Illuminate\Console\GeneratorCommand;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Attribute\AsCommand;
 
 #[AsCommand(name: 'make:activity')]
@@ -96,9 +97,51 @@ class ActivityMakeCommand extends GeneratorCommand
     protected function getNameInput()
     {
         $name = trim($this->argument('name'));
+        $names = preg_split('~[\\\\/]~', $name);
 
-        $class = last(preg_split('~[\\\\/]~', $name));
-        return str_replace($class, 'Traits', $name) . '\\HasActivity' . $class . 'Property';
+        $class = last($names);
+        $class = 'HasActivity' . $class . 'Property';
+
+        $names[array_key_last($names)] = 'Traits';
+        $names[] = $class;
+
+        return implode('\\', $names);
+    }
+
+    /**
+     * Replace the namespace for the given stub.
+     *
+     * @param  string  $stub
+     * @param  string  $name
+     * @return $this
+     */
+    protected function replaceNamespace(&$stub, $name)
+    {
+        $searches = [
+            ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel', 'ActiveVersion'],
+            ['{{ namespace }}', '{{ rootNamespace }}', '{{ namespacedUserModel }}', '{{ activeVersion }}'],
+            ['{{namespace}}', '{{rootNamespace}}', '{{namespacedUserModel}}', '{{activeVersion}}'],
+        ];
+
+        foreach ($searches as $search) {
+            $stub = str_replace(
+                $search,
+                [$this->getNamespace($name), $this->rootNamespace(), $this->userProviderModel(), $this->getActiveVersion()],
+                $stub
+            );
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the active version in this app.
+     *
+     * @return string
+     */
+    private function getActiveVersion()
+    {
+        return config('base.conf.version');
     }
 
 }

@@ -11,7 +11,7 @@ class BaseCodeName
     private const CAPITALS = [];
 
 
-    /** FUNCTIONS */
+    /** --- FUNCTIONS --- */
 
     /**
      * @param array|null $options
@@ -52,6 +52,16 @@ class BaseCodeName
         }
 
         return $value;
+    }
+
+    /**
+     * @param string $code
+     *
+     * @return array
+     */
+    public static function codeName(string $code): array
+    {
+        return ['code' => $code, 'name' => static::display($code)];
     }
 
 }
