@@ -20,12 +20,14 @@ class BaseIDName
      */
     public static function get(array|null $options = null): array
     {
-        if (!$options) {
-            $options = static::OPTION;
+        if ($options) {
+            return collect($options)->map(function ($option) {
+                return ['id' => $option, 'name' => static::display($option)];
+            })->toArray();
         }
 
         $data = [];
-        foreach ($options as $key => $value) {
+        foreach (static::OPTION as $key => $value) {
             $data[] = ['id' => $key, 'name' => $value];
         }
 
@@ -49,7 +51,7 @@ class BaseIDName
      */
     public static function idName(int $id): array
     {
-        return ['id' => $id, 'name' => static::OPTION[$id]];
+        return ['id' => $id, 'name' => static::display($id)];
     }
 
 }

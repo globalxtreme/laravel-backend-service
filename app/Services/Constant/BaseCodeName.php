@@ -20,12 +20,14 @@ class BaseCodeName
      */
     public static function get(array|null $options = null): array
     {
-        if (!$options) {
-            $options = static::OPTION;
+        if ($options) {
+            return collect($options)->map(function ($option) {
+                return ['code' => $option, 'name' => static::display($option)];
+            })->toArray();
         }
 
         $data = [];
-        foreach ($options as $value) {
+        foreach (static::OPTION as $value) {
             $data[] = ['code' => $value, 'name' => static::display($value)];
         }
 
