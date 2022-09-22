@@ -21,7 +21,7 @@ class {{ class }}
      *
      * @return mixed|JsonResponse
      */
-    public function handleCreate(Request $request)
+    public function create(Request $request)
     {
         try {
 
@@ -37,7 +37,7 @@ class {{ class }}
      *
      * @return mixed|JsonResponse
      */
-    public function handleUpdate(Request $request)
+    public function update(Request $request)
     {
         try {
 
@@ -51,7 +51,7 @@ class {{ class }}
     /**
      * @return mixed|JsonResponse
      */
-    public function handleDelete()
+    public function delete()
     {
         try {
 
