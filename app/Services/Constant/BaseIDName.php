@@ -35,22 +35,30 @@ class BaseIDName
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
      * @return string
      */
-    public static function display(int $id): string
+    public static function display(int|null $id = null): string
     {
-        return static::OPTION[$id];
+        if (isset(static::OPTION[$id])) {
+            return static::OPTION[$id];
+        }
+
+        return self::UNKNOWN;
     }
 
     /**
-     * @param int $id
+     * @param int|null $id
      *
-     * @return array
+     * @return array|null
      */
-    public static function idName(int $id): array
+    public static function idName(int|null $id = null): array|null
     {
+        if (!$id) {
+            return null;
+        }
+
         return ['id' => $id, 'name' => static::display($id)];
     }
 

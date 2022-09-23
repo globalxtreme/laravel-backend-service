@@ -57,12 +57,16 @@ class BaseCodeName
     }
 
     /**
-     * @param string $code
+     * @param string|null $code
      *
-     * @return array
+     * @return array|null
      */
-    public static function codeName(string $code): array
+    public static function codeName(string|null $code = null): array|null
     {
+        if (!$code) {
+            return null;
+        }
+
         return ['code' => $code, 'name' => static::display($code)];
     }
 
