@@ -6,10 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "globalxtreme/rabbitmq": "2.0.*",
         "globalxtreme/response": "^1.1",
         "globalxtreme/validation": "^1.1",
         "guzzlehttp/guzzle": "^7.2",
-        "laravel/framework": "^9.19",
+        "laravel/framework": "9.41.*",
         "laravel/tinker": "^2.7"
     },
     "require-dev": {

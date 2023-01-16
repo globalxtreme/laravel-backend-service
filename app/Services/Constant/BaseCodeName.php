@@ -70,4 +70,14 @@ class BaseCodeName
         return ['code' => $code, 'name' => static::display($code)];
     }
 
+    /**
+     * @param string $value
+     *
+     * @return string
+     */
+    public static function toCamelCase(string $value): string
+    {
+        return Str::camel($value);
+    }
+
 }
