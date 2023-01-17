@@ -40,17 +40,27 @@ class RouteServiceProvider extends ServiceProvider
             $version = config('base.conf.version');
             $service = config('base.conf.service');
 
+            Route::match(['get', 'post'], 'testing', "$this->namespace\\Controller@testing");
+
             Route::prefix(config('base.conf.prefix.web') . "/$version/$service")
+                ->middleware(['web', 'identifier.employee'])
                 ->namespace("$this->namespace\\" . config('base.conf.namespace.web') . "\\$version")
                 ->group(base_path('routes/web.php'));
 
             Route::prefix(config('base.conf.prefix.mobile') . "/$version/$service")
+                ->middleware(['web', 'identifier.employee'])
                 ->namespace("$this->namespace\\" . config('base.conf.namespace.mobile') . "\\$version")
                 ->group(base_path('routes/mobile.php'));
 
             Route::prefix(config('base.conf.prefix.b2b') . "/$version/$service")
+                ->middleware(['web', 'identifier.employee'])
                 ->namespace("$this->namespace\\" . config('base.conf.namespace.b2b') . "\\$version")
                 ->group(base_path('routes/b2b.php'));
+
+            Route::prefix(config('base.conf.prefix.mygx') . "/$version/$service")
+                ->middleware(['web', 'identifier.mygx'])
+                ->namespace("$this->namespace\\" . config('base.conf.namespace.mygx') . "\\$version")
+                ->group(base_path('routes/mygx.php'));
 
         });
     }

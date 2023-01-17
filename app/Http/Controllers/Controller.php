@@ -11,4 +11,16 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+
+    /**
+     * @param Request $request
+     *
+     * @return string|mixed
+     */
+    public function testing(Request $request)
+    {
+        return 'testing';
+    }
+
 }
