@@ -63,6 +63,21 @@ return [
             ]) : [],
         ],
 
+        'rabbitmq' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_RABBITMQ_HOST', '127.0.0.1'),
+            'port' => env('DB_RABBITMQ_PORT', '5432'),
+            'database' => env('DB_RABBITMQ_DATABASE', 'forge'),
+            'username' => env('DB_RABBITMQ_USERNAME', 'forge'),
+            'password' => env('DB_RABBITMQ_PASSWORD', ''),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
