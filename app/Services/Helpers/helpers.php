@@ -272,3 +272,21 @@ if (!function_exists("alphabet_from_number")) {
     }
 
 }
+
+if (!function_exists("storage_link")) {
+
+    /**
+     * @param string $path
+     *
+     * @return string
+     */
+    function storage_link(string $path)
+    {
+        if (!$path) {
+            return null;
+        }
+
+        return config('base.conf.storage-link') . $path;
+    }
+
+}

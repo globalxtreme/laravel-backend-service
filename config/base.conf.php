@@ -56,4 +56,6 @@ return [
         'yuswa98@gmail.com'
     ],
 
+    'storage-link' => env('API_GATEWAY_LINK_URL', 'http://localhost/'),
+
 ];
