@@ -2,13 +2,21 @@
 
 namespace {{ namespace }};
 
-use Illuminate\Support\Facades\Log;
+use GlobalXtreme\RabbitMQ\Models\GXRabbitMessage;
 
 class {{ class }}
 {
     /**
+     * @param GXRabbitMessage $rabbitMessage
+     */
+    public function __construct(protected GXRabbitMessage $rabbitMessage)
+    {
+    }
+
+
+    /**
      * The service for handle process of message
-     * Please don't use try catch. For handle failed process in BaseQueueJob
+     * Please don't use try catch. For handle failed process in consumer command
      *
      * @param array|string $data
      * @return void

@@ -8,3 +8,17 @@ if (!function_exists("errDefault")) {
         error(Error::DEFAULT, $internalMsg, $status);
     }
 }
+
+if (!function_exists("errThirdPartyOpenAPIClientInvalid")) {
+    function errThirdPartyOpenAPIClientInvalid($internalMsg = "", $status = null)
+    {
+        error(Error::GLOBAL['MESSAGE_BROKER_FAILED_NOT_FOUND'], $internalMsg, $status);
+    }
+}
+
+if (!function_exists("errValidation")) {
+    function errValidation($internalMsg = "")
+    {
+        error(Error::GLOBAL['VALIDATION'], $internalMsg, 400);
+    }
+}

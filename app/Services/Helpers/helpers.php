@@ -50,7 +50,7 @@ if (!function_exists("service_location")) {
     /**
      * @param $uuid
      *
-     * @return mixed|TValue|null
+     * @return mixed|null
      */
     function service_location($uuid)
     {
@@ -72,6 +72,18 @@ if (!function_exists("auth_company_office")) {
     function auth_company_office()
     {
         return request()->companyOffice ?: null;
+    }
+
+}
+
+if (!function_exists("get_company_office_ids")) {
+
+    /**
+     * @return array|null
+     */
+    function get_company_office_ids()
+    {
+        return request()->companyOfficeIds ?: [];
     }
 
 }

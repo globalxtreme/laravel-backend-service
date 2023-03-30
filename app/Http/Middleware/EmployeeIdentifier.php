@@ -26,6 +26,7 @@ class EmployeeIdentifier
 
         $request->employee = $decrypt;
         $request->companyOffice = $decrypt['companyOffice'];
+        $request->companyOfficeIds = isset($decrypt['companyOfficeIds']) ? $decrypt['companyOfficeIds'] : [$request->companyOffice['id']];
         return $next($request);
     }
 
