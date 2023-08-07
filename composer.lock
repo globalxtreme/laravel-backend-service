@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9a0f661a068e9cf4f5d3eee28f9dee73",
+    "content-hash": "9953bb75b57820bd555a07827f362d79",
     "packages": [
         {
             "name": "brick/math",
@@ -1130,6 +1130,50 @@
                 "source": "https://github.com/globalxtreme/parser/tree/1.1.3"
             },
             "time": "2022-09-21T07:36:02+00:00"
+        },
+        {
+            "name": "globalxtreme/php-storage",
+            "version": "1.0.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/globalxtreme/php-storage.git",
+                "reference": "4397976479acb5f60417828550b3e7d29df47272"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/globalxtreme/php-storage/zipball/4397976479acb5f60417828550b3e7d29df47272",
+                "reference": "4397976479acb5f60417828550b3e7d29df47272",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^5.0|^6.0|^7.0|^7.5",
+                "illuminate/support": "^5.0|^6.0.|^7.0.|^8.0.|^9.0.",
+                "php": "7.*|8.*",
+                "symfony/http-foundation": "^v5.0|v6.0.*|v6.1.*|v6.2.*",
+                "vlucas/phpdotenv": "^4.0|5.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GlobalXtreme\\PHPStorage\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuswa",
+                    "email": "yuswa98@gmail.com"
+                }
+            ],
+            "description": "GlobalXtreme Storage Package for PHP Language",
+            "support": {
+                "issues": "https://github.com/globalxtreme/php-storage/issues",
+                "source": "https://github.com/globalxtreme/php-storage/tree/1.0.14"
+            },
+            "time": "2023-08-07T05:59:26+00:00"
         },
         {
             "name": "globalxtreme/rabbitmq",
