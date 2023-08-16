@@ -64,18 +64,23 @@ return [
         ],
 
         'rabbitmq' => [
-            'driver' => 'pgsql',
+            'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_RABBITMQ_HOST', '127.0.0.1'),
-            'port' => env('DB_RABBITMQ_PORT', '5432'),
+            'port' => env('DB_RABBITMQ_PORT', '3306'),
             'database' => env('DB_RABBITMQ_DATABASE', 'forge'),
             'username' => env('DB_RABBITMQ_USERNAME', 'forge'),
             'password' => env('DB_RABBITMQ_PASSWORD', ''),
-            'charset' => 'utf8',
+            'unix_socket' => env('DB_RABBITMQ_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'search_path' => 'public',
-            'sslmode' => 'prefer',
+            'strict' => false,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
 
         'pgsql' => [
