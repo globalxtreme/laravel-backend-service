@@ -2,33 +2,20 @@
 
 namespace App\Http\Middleware\Traits;
 
-use Illuminate\Http\Request;
-
 trait HasIdentifierToken
 {
     /**
-     * @param Request $request
+     * @param $token
      *
      * @return mixed
      */
-    protected function decrypt(Request $request)
+    protected function decrypt($token)
     {
-        $token = $request->header('IDENTIFIER');
-        if (!$token) {
-            errUnauthenticated();
-        }
+        $token = base64_decode($token);
 
-//        $token = base64_decode($token);
-//
-//        $cipher = config('app.cipher');
-//        $secret = config('base.conf.secret');
-//
-//        $ivLength = openssl_cipher_iv_length($cipher);
-//        $iv = substr($token, 0, $ivLength);
-//
-//        $decrypt = json_decode(base64_decode(openssl_decrypt(substr($token, $ivLength), $cipher, $secret, 1, $iv)), true);
-//        $decrypt = json_decode(base64_decode(openssl_decrypt($decrypt[$secret], $cipher, $secret, 0, $iv)), true);
+        [$iv, $explodeToken] = [substr($token, 0, 16), explode('-:-', substr($token, 16))];
+        [$secret, $actualEncryption] = [substr($explodeToken[1], 0, $explodeToken[0]), substr($explodeToken[1], $explodeToken[0])];
 
-        return json_decode(base64_decode($token), true);
+        return json_decode(gzuncompress(openssl_decrypt($actualEncryption, "aes-256-cbc", $secret, 0, $iv)), true);
     }
 }

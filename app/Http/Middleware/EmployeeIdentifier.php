@@ -19,14 +19,29 @@ class EmployeeIdentifier
      */
     public function handle(Request $request, Closure $next)
     {
-        $decrypt = $this->decrypt($request);
-        if (!$this->employeeIsValid($decrypt)) {
-            errUnauthenticated();
+        $identifier = $request->header('IDENTIFIER');
+        if (!$identifier) {
+            errUnauthenticated('IDENTIFIER not found');
         }
 
-        $request->employee = $decrypt;
-        $request->companyOffice = $decrypt['companyOffice'];
-        $request->companyOfficeIds = isset($decrypt['companyOfficeIds']) ? $decrypt['companyOfficeIds'] : [$request->companyOffice['id']];
+        $decryptEmployee = $this->decrypt($identifier);
+        if (!$this->employeeIsValid($decryptEmployee)) {
+            errUnauthenticated("Data employee invalid");
+        }
+
+        $access = $request->header('ACCESS');
+        if (!$access) {
+            errUnauthenticated('ACCESS not found');
+        }
+
+        $decryptAccess = $this->decrypt($access) ?: [];
+
+        $request->employee = $decryptEmployee;
+        $request->companyOffice = $decryptEmployee['companyOffice'];
+        $request->companyOfficeIds = isset($decryptEmployee['companyOfficeIds']) ? $decryptEmployee['companyOfficeIds'] : [$request->companyOffice['id']];
+        $request->roles = isset($decryptAccess['roles']) ? $decryptAccess['roles'] : [];
+        $request->permissions = isset($decryptAccess['permissions']) ? $decryptAccess['permissions'] : [];
+
         return $next($request);
     }
 

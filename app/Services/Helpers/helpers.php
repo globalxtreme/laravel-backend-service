@@ -133,6 +133,30 @@ if (!function_exists('filename')) {
 
 }
 
+if (!function_exists("get_roles")) {
+
+    /**
+     * @return array
+     */
+    function get_roles(): array
+    {
+        return request()->roles ?: [];
+    }
+
+}
+
+if (!function_exists("get_permissions")) {
+
+    /**
+     * @return array
+     */
+    function get_permissions(): array
+    {
+        return request()->permissions ?: [];
+    }
+
+}
+
 if (!function_exists("has_permission_to")) {
 
     /**
@@ -142,16 +166,7 @@ if (!function_exists("has_permission_to")) {
      */
     function has_permission_to(string $name): bool
     {
-        $employee = auth_employee();
-        if (!$employee) {
-            return false;
-        }
-
-        if (!isset($employee['permissions']) || !is_array($employee['permissions'])) {
-            return false;
-        }
-
-        $permissions = $employee['permissions'];
+        $permissions = get_permissions();
         if (!isset($permissions[$name])) {
             return false;
         }
@@ -170,16 +185,7 @@ if (!function_exists("has_role_to")) {
      */
     function has_role_to(string $name): bool
     {
-        $employee = auth_employee();
-        if (!$employee) {
-            return false;
-        }
-
-        if (!isset($employee['roles']) || !is_array($employee['roles'])) {
-            return false;
-        }
-
-        $roles = $employee['roles'];
+        $roles = get_roles();
         if (!isset($roles[$name])) {
             return false;
         }
