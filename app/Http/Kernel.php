@@ -62,7 +62,5 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'identifier.employee' => \App\Http\Middleware\EmployeeIdentifier::class,
-        'identifier.mygx' => \App\Http\Middleware\MyGlobalXtremeIdentifier::class,
     ];
 }
