@@ -10,7 +10,7 @@ class FilteringCompanyOfficeAssignedScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
-        // TODO: Change to auth_company_office_ids() after install globalxtreme/laravel-employee-identifier.
+        // TODO: Change to auth_company_office_ids() after install globalxtreme/laravel-identifier.
         $companyOfficeIds = request()->companyOfficeIds ?: [];
         if (count($companyOfficeIds) > 0) {
             $builder->where(function ($query) use ($model, $companyOfficeIds) {

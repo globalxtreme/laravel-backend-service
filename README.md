@@ -35,7 +35,7 @@ return [
   ```
 
 ### Authorization
-Install [laravel-employee-identifier](https://github.com/globalxtreme/laravel-employee-identifier).
+Install [laravel-identifier](https://github.com/globalxtreme/laravel-identifier).
 If you don't have access to this package, please contact your head for invite you to this package
 
 ### Generate Algorithm file
