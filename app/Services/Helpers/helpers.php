@@ -61,36 +61,6 @@ if (!function_exists("snake_to_camel_case")) {
 
 }
 
-if (!function_exists("validate_latitude")) {
-
-    /**
-     * @param float|int|string $latitude
-     *
-     * @return bool `true` if $lat is valid, `false` if not
-     */
-    function validate_latitude(float|int|string $latitude)
-    {
-        $latitude = number_format((float)$latitude, 6);
-        return preg_match('/^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$/', $latitude);
-    }
-
-}
-
-if (!function_exists("validate_longitude")) {
-
-    /**
-     * @param float|int|string $longitude
-     *
-     * @return bool `true` if $long is valid, `false` if not
-     */
-    function validate_longitude(float|int|string $longitude)
-    {
-        $longitude = number_format((float)$longitude, 6);
-        return preg_match('/^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$/', $longitude);
-    }
-
-}
-
 if (!function_exists("alphabet_from_number")) {
 
     /**

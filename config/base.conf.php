@@ -34,8 +34,6 @@ return [
 
         'mobile' => env('BASE_MOBILE_PREFIX', 'api/mobile'),
 
-        'b2b' => env('BASE_B2B_PREFIX', 'api/b2b'),
-
         'mygx' => env('BASE_MYGX_PREFIX', 'api/mygx'),
 
     ],
@@ -45,8 +43,6 @@ return [
         'web' => env('BASE_WEB_NAMESPACE', 'Web'),
 
         'mobile' => env('BASE_MOBILE_NAMESPACE', 'Mobile'),
-
-        'b2b' => env('BASE_B2B_NAMESPACE', 'B2B'),
 
         'mygx' => env('BASE_MYGX_NAMESPACE', 'MyGX'),
 

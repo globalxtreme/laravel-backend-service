@@ -2,25 +2,18 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\MessageBroker\GXRabbitKeySeeder;
-use Database\Seeders\MessageBroker\GXRabbitQueueSeeder;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
      * Seed the application's database.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $this->call([
-
-            // MESSAGE BROKER
-            GXRabbitQueueSeeder::class,
-            GXRabbitKeySeeder::class,
-
+            // Add seeder class
         ]);
     }
 }

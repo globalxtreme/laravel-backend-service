@@ -2,14 +2,13 @@
 
 namespace App\Algorithms\v1\Component;
 
-use App\Algorithms\v1\Component\Support\ComponentBaseAlgorithm;
 use App\Services\Constant\Activity\ActivityAction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class ComponentAlgo extends ComponentBaseAlgorithm
+class ComponentAlgo
 {
     /**
      * @param $model
@@ -17,24 +16,24 @@ class ComponentAlgo extends ComponentBaseAlgorithm
      *
      * @return JsonResponse|mixed
      */
-    public function handleCreateBy($model, Request $request)
+    public function createBy($model, Request $request)
     {
         try {
 
             $component = DB::transaction(function () use ($model, $request) {
-
-                $tableName = app($model)->getTable();
-                $columns = DB::getSchemaBuilder()->getColumnListing($tableName);
-
                 $createdBy = [];
-                if (in_array('createdBy', $columns)) {
-                    if ($user = auth_user()) {
-                        $createdBy = [
-                            'createdBy' => $user['id'],
-                            'createdByName' => $user['fullName'],
-                        ];
-                    }
-                }
+
+                // TODO: Enable after install globalxtreme/laravel-identifier.
+//                $tableName = app($model)->getTable();
+//                $columns = DB::getSchemaBuilder()->getColumnListing($tableName);
+//                if (in_array('createdBy', $columns)) {
+//                    if ($user = auth_user()) {
+//                        $createdBy = [
+//                            'createdBy' => $user['id'],
+//                            'createdByName' => $user['fullName'],
+//                        ];
+//                    }
+//                }
 
                 $component = $model::create($request->all() + $createdBy);
 
@@ -58,7 +57,7 @@ class ComponentAlgo extends ComponentBaseAlgorithm
      *
      * @return mixed|JsonResponse
      */
-    public function handleUpdate(Model $model, Request $request)
+    public function update(Model $model, Request $request)
     {
         try {
 
@@ -85,7 +84,7 @@ class ComponentAlgo extends ComponentBaseAlgorithm
      *
      * @return mixed|JsonResponse
      */
-    public function handleDelete(Model $model)
+    public function delete(Model $model)
     {
         try {
 

@@ -4,7 +4,12 @@ namespace App\Models;
 
 trait GetOrPaginate
 {
-    public function scopeGetOrPaginate($query, $request, $forcePagination = false)
+    /**
+     * @param $query
+     * @param $request
+     * @param bool $forcePagination
+     */
+    public function scopeGetOrPaginate($query, $request, bool $forcePagination = false)
     {
         $pagination = $forcePagination ?: false;
         if ($request->has('page')) {

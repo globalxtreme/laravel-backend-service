@@ -9,9 +9,8 @@ class TestCommand extends Command
     protected $signature = 'dev-test';
     protected $description = '';
 
-
     public function handle()
     {
-        $this->info('dev-test');
+        //
     }
 }

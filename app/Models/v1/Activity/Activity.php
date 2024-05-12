@@ -10,8 +10,12 @@ class Activity extends BaseModel
     protected $table = 'activities';
     protected $guarded = ['id'];
 
-    protected $casts = ['properties' => 'array'];
-    protected $dates = [self::CREATED_AT, self::UPDATED_AT, self::DELETED_AT];
+    protected $casts = [
+        self::CREATED_AT => 'datetime',
+        self::UPDATED_AT => 'datetime',
+        self::DELETED_AT => 'datetime',
+        'properties' => 'array',
+    ];
 
 
     /** RELATIONSHIPS */

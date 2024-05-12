@@ -42,13 +42,6 @@ class NumberMakeCommand extends GeneratorCommand
     protected $type = 'Number';
 
     /**
-     * This stub is for installation
-     *
-     * @var string
-     */
-    protected $stubFile;
-
-    /**
      * Execute the console command.
      *
      * @return bool|null
@@ -59,28 +52,13 @@ class NumberMakeCommand extends GeneratorCommand
     {
         $nameInput = $this->getNameInput();
 
-        $stubs = [
-            'number.contract.stub' => 'Contract\\' . $nameInput . 'NumberGeneratorContract',
-            'number.facade.stub' => 'Facade\\' . $nameInput . 'Number',
-            'number.generator.stub' => 'Generator\\' . $nameInput . 'NumberGenerator'
-        ];
-        foreach ($stubs as $key => $stub) {
+        $name = $this->qualifyClass("Generator\\$nameInput");
+        $path = $this->getPath($name);
 
-            $this->stubFile = $key;
+        $this->makeDirectory($path);
+        $this->info($path);
 
-            $name = $this->qualifyClass($stubs[$key]);
-
-            $path = $this->getPath($name);
-
-            // Next, we will generate the path to the location where this class' file should get
-            // written. Then, we will build the class and make the proper replacements on the
-            // stub files so that it gets the correctly formatted namespace and class name.
-            $this->makeDirectory($path);
-            $this->info($path);
-
-            $this->files->put($path, $this->sortImports($this->buildClass($name)));
-
-        }
+        $this->files->put($path, $this->sortImports($this->buildClass($name)));
 
         $this->info($this->type . ' Generator created successfully.');
     }
@@ -92,7 +70,7 @@ class NumberMakeCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return $this->resolveStubPath('/stubs/' . $this->stubFile);
+        return $this->resolveStubPath('/stubs/number.stub');
     }
 
     /**
@@ -117,43 +95,6 @@ class NumberMakeCommand extends GeneratorCommand
     protected function getDefaultNamespace($rootNamespace)
     {
         return $rootNamespace . '\Services\Number';
-    }
-
-    /**
-     * Replace the namespace for the given stub.
-     *
-     * @param  string  $stub
-     * @param  string  $name
-     * @return $this
-     */
-    protected function replaceNamespace(&$stub, $name)
-    {
-        $searches = [
-            ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel', 'DummyNameInput', 'DummyNameInputClass'],
-            ['{{ namespace }}', '{{ rootNamespace }}', '{{ namespacedUserModel }}', '{{ nameInput }}', '{{ nameInputClass }}'],
-            ['{{namespace}}', '{{rootNamespace}}', '{{namespacedUserModel}}', '{{nameInput}}', '{{nameInputClass}}'],
-        ];
-
-        foreach ($searches as $search) {
-            $stub = str_replace(
-                $search,
-                [$this->getNamespace($name), $this->rootNamespace(), $this->userProviderModel(), $this->getNameInput(), $this->getNameInputClass()],
-                $stub
-            );
-        }
-
-        return $this;
-    }
-
-    /**
-     * Get the desired class name class from the input.
-     *
-     * @return string
-     */
-    protected function getNameInputClass()
-    {
-        $nameInput = last(preg_split('~[\\\\/]~', $this->getNameInput()));
-        return trim($nameInput);
     }
 
 }

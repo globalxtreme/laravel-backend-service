@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use GlobalXtreme\Parser\Trait\HasParser;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,7 +10,6 @@ class BaseModel extends Model
 {
     use SoftDeletes;
     use GetOrPaginate;
-    use HasParser;
 
     // Custom date times column
     const CREATED_AT = 'createdAt';

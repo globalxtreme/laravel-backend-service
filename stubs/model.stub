@@ -9,14 +9,10 @@ class {{ class }} extends BaseModel
     // protected $table = '';
     protected $guarded = ['id'];
 
-    protected $dates = [self::CREATED_AT, self::UPDATED_AT, self::DELETED_AT];
-
-
-    /** --- SCOPES --- */
-
-    public function scopeFilter($query, $request)
-    {
-        return $query;
-    }
+    protected $casts = [
+        self::CREATED_AT => 'datetime',
+        self::UPDATED_AT => 'datetime',
+        self::DELETED_AT => 'datetime'
+    ];
 
 }
