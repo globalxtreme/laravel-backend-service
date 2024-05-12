@@ -38,16 +38,6 @@ return [
 Install [laravel-identifier](https://github.com/globalxtreme/laravel-identifier).
 If you don't have access to this package, please contact your head for invite you to this package
 
-### Generate Algorithm file
-
-```
-// Generate basic algorithm
-php artisan make:algorithm ExampleAlgo
-  
-// Generate algorithm without abstract class
-php artisan make:algorithm ExampleAlgo -w
-```
-
 ### Generate trait for activity properties file in model
 
 ```
@@ -62,7 +52,7 @@ will generate activity **trait** file **App\Models\Component\Traits\HasActivityC
 ### Generate number generator class
 
 ```
-php artisan make:number path\ClassName
+php artisan make:number ClassName
 ```
 
 After success generate number generator, you can check in **app\Services\Number** path. Ex: generate number generator
