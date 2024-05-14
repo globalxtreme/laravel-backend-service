@@ -55,23 +55,27 @@ will generate activity **trait** file **App\Models\Component\Traits\HasActivityC
 php artisan make:number ClassName
 ```
 
-After success generate number generator, you can check in **app\Services\Number** path. Ex: generate number generator
-for component. You can run command like this **"php artisan make:number Component"** will generate three file for
-**interface, facade and generator**. You can check files in **app\Services\Number\Generator\ComponentNumberGenerator.php**
-for generator file, **app\Services\Number\Facade\ComponentNumber** for facade file, **app\Services\Number\Contract\ComponentNumberGeneratorContract** for interface file.
-Set up facade in **App\Providers\NumberServiceProvider.**
+After success generate number generator, you can check in **app\Services\Number\Generator** path.
+You can modify the number generator if you have a custom format.
 ```php
-/**
- * Register services.
- *
- * @return void
- */
- public function register()
- {
-      $this->app->bind(ComponentNumberGeneratorContract::class, function () {
-          return new ComponentNumberGenerator(new Component());
-      });
- } 
+class TestingNumber extends BaseNumber
+{
+    /**
+     * @var string
+     */
+    protected static string $prefix = "TXT"; // Your prefix number (code)
+
+    /**
+     * @var Model|string|null
+     */
+    protected Model|string|null $model = null;
+    
+    // Add this function if you have a custom format.
+    public static function generate(): string {
+        // Your custom format
+    }
+
+}
 ```
 
 ### Generate form class (builder)
