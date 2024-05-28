@@ -1,6 +1,5 @@
 <?php
 
-$version = config('base.conf.version');
-$base = base_path("routes/features/mygx/$version/");
+$base = base_path("routes/features/mygx/");
 
 //require($base . "example.php");

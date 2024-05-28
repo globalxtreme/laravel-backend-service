@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\v1\Component\Traits;
+namespace App\Models\Component\Traits;
 
-use App\Models\v1\Activity\Traits\HasActivity;
+use App\Models\Activity\Traits\HasActivity;
+use App\Parser\Component\ComponentParser;
 use App\Services\Constant\Activity\ActivityType;
-use App\Services\Parser\Component\ComponentParser;
 
 trait HasActivityComponentProperty
 {

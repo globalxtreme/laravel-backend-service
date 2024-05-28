@@ -1,6 +1,5 @@
 <?php
 
-$version = config('base.conf.version');
-$base = base_path("routes/features/web/$version/");
+$base = base_path("routes/features/web/");
 
-//require($base . "example.php");
+require($base . "activity.php");

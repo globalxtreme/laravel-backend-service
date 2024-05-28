@@ -10,7 +10,7 @@ class TestingNumber extends BaseNumber
     /**
      * @var string
      */
-    protected static string $prefix = "TXT";
+    protected static string $prefix = "TEST";
 
     /**
      * @var Model|string|null

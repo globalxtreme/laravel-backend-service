@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use App\Models\{{ activeVersion }}\Activity\Traits\HasActivity;
+use App\Models\Activity\Traits\HasActivity;
 use App\Services\Constant\Activity\ActivityType;
 
 trait {{ class }}

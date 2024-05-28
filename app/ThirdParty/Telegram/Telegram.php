@@ -14,11 +14,11 @@ class Telegram
     const BASE_URL = 'https://api.telegram.org/';
 
     const BOOT_TOKENS = [
-        'DEVELOPMENT' => '1285522820:AAEzeBi2iz-Z0_1ua55G9jHg8EMKE8nXcSk'
+        'DEVELOPMENT' => ''
     ];
 
     const ROOM_CHAT_IDS = [
-        'DEVELOPMENT' => '-485588353'
+        'DEVELOPMENT' => ''
     ];
 
 

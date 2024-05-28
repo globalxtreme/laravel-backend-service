@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\v1\Activity\Traits;
+namespace App\Models\Activity\Traits;
 
 use App\Services\Constant\Activity\ActivityType;
 use Illuminate\Support\Str;

@@ -118,30 +118,20 @@ class ActivityMakeCommand extends GeneratorCommand
     protected function replaceNamespace(&$stub, $name)
     {
         $searches = [
-            ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel', 'ActiveVersion'],
-            ['{{ namespace }}', '{{ rootNamespace }}', '{{ namespacedUserModel }}', '{{ activeVersion }}'],
-            ['{{namespace}}', '{{rootNamespace}}', '{{namespacedUserModel}}', '{{activeVersion}}'],
+            ['DummyNamespace', 'DummyRootNamespace', 'NamespacedDummyUserModel'],
+            ['{{ namespace }}', '{{ rootNamespace }}', '{{ namespacedUserModel }}'],
+            ['{{namespace}}', '{{rootNamespace}}', '{{namespacedUserModel}}'],
         ];
 
         foreach ($searches as $search) {
             $stub = str_replace(
                 $search,
-                [$this->getNamespace($name), $this->rootNamespace(), $this->userProviderModel(), $this->getActiveVersion()],
+                [$this->getNamespace($name), $this->rootNamespace(), $this->userProviderModel()],
                 $stub
             );
         }
 
         return $this;
-    }
-
-    /**
-     * Get the active version in this app.
-     *
-     * @return string
-     */
-    private function getActiveVersion()
-    {
-        return config('base.conf.version');
     }
 
 }
