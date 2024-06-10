@@ -1,8 +1,8 @@
 <?php
 
 if (!function_exists("errDefault")) {
-    function errDefault($internalMsg = "", $status = null)
+    function errDefault($internalMsg = "")
     {
-        error(500, "An error occurred!", $internalMsg, $status);
+        error(500, "An error occurred!", $internalMsg);
     }
 }
