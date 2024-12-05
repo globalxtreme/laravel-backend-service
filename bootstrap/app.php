@@ -30,7 +30,9 @@ return Application::configure(basePath: dirname(__DIR__))
             ->group(base_path('routes/mygx.php'));
     })
     ->withMiddleware(function (Middleware $middleware) {
-        //
+        $middleware->remove([
+            \Illuminate\Http\Middleware\HandleCors::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
