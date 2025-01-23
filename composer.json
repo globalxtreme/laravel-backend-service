@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.3",
         "globalxtreme/php-storage": "^1.0",
-        "globalxtreme/rabbitmq": "2.0.19",
+        "globalxtreme/rabbitmq": "2.1.5",
         "globalxtreme/response": "^2.0",
         "globalxtreme/validation": "^1.1",
         "laravel/framework": "^11.0",
