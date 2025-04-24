@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Algorithms\Component\TestingAlgo;
 use Illuminate\Console\Command;
 
 class TestCommand extends Command
@@ -11,6 +12,7 @@ class TestCommand extends Command
 
     public function handle()
     {
-        //
+        $algo = new TestingAlgo();
+        $algo->testing();
     }
 }

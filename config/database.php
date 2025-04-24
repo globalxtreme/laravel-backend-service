@@ -59,6 +59,46 @@ return [
             ]) : [],
         ],
 
+        'erp' => [
+            'driver' => 'mysql',
+            'url' => env('DB_ERP_URL'),
+            'host' => env('DB_ERP_HOST', '127.0.0.1'),
+            'port' => env('DB_ERP_PORT', '3306'),
+            'database' => env('DB_ERP_DATABASE', 'laravel'),
+            'username' => env('DB_ERP_USERNAME', 'root'),
+            'password' => env('DB_ERP_PASSWORD', ''),
+            'unix_socket' => env('DB_ERP_SOCKET', ''),
+            'charset' => env('DB_ERP_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_ERP_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
+        'inventory' => [
+            'driver' => 'mysql',
+            'url' => env('DB_INVENTORY_URL'),
+            'host' => env('DB_INVENTORY_HOST', '127.0.0.1'),
+            'port' => env('DB_INVENTORY_PORT', '3306'),
+            'database' => env('DB_INVENTORY_DATABASE', 'laravel'),
+            'username' => env('DB_INVENTORY_USERNAME', 'root'),
+            'password' => env('DB_INVENTORY_PASSWORD', ''),
+            'unix_socket' => env('DB_INVENTORY_SOCKET', ''),
+            'charset' => env('DB_INVENTORY_CHARSET', 'utf8mb4'),
+            'collation' => env('DB_INVENTORY_COLLATION', 'utf8mb4_unicode_ci'),
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'strict' => true,
+            'engine' => null,
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
+        ],
+
         'rabbitmq' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
