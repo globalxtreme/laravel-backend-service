@@ -1,18 +1,15 @@
 <?php
 
-namespace App\ThirdParty\Validation;
+namespace App\ThirdParty\PrivateAPI;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\BadResponseException;
-use Illuminate\Support\Facades\Log;
 
-class ServiceValidation
+class PrivateAPI
 {
     const CLIENT = 'default';
 
-    const URI = [
-        'BASE' => 'open-api/'
-    ];
+    const BASE_URL = 'private-api/';
 
 
     /** --- PROTECTED FUNCTIONS --- */
@@ -23,7 +20,7 @@ class ServiceValidation
      * @param $method
      *
      * @return \Illuminate\Http\JsonResponse|void
-     * @throws \ErrorException
+     * @throws \GlobalXtreme\Response\Exception\ErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     protected static function call($url, $payload = [], $method = 'get')
@@ -41,10 +38,9 @@ class ServiceValidation
 
             // Check http status code
             $statusCode = $response->getStatusCode();
-            if ($statusCode != 200) {
-                if ($body?->status) {
-                    $status = $body->status;
-                    error(['code' => $status->code, 'msg' => $status->message], $status->internalMsg, $statusCode, $status->attributes);
+            if ($statusCode > 299) {
+                if ($status = $body?->status) {
+                    error($statusCode, $status->message, $status->internalMsg, $status->attributes);
                 }
 
                 errDefault();
@@ -58,10 +54,10 @@ class ServiceValidation
             $body = json_decode($e->getResponse()->getBody());
             if ($body?->status) {
                 $status = $body->status;
-                error(['code' => $status->code, 'msg' => $status->message], $status->internalMsg, $e->getResponse()->getStatusCode(), $status->attributes);
+                error($status->code, $status->message, $status->internalMsg, $status->attributes);
             }
 
-            errDefault(status:  $e->getResponse()->getStatusCode());
+            errDefault($e->getMessage());
         }
     }
 
@@ -70,7 +66,7 @@ class ServiceValidation
      */
     protected static function host()
     {
-        return config('open-api.clients.' . static::CLIENT . '.host');
+        return config('private-api.clients.' . static::CLIENT . '.host');
     }
 
     /**
@@ -97,9 +93,9 @@ class ServiceValidation
      */
     protected static function setHeaders()
     {
-        $client = config('open-api.clients.' . static::CLIENT);
+        $client = config('private-api.clients.' . static::CLIENT);
         if (!$client) {
-            errThirdPartyOpenAPIClientInvalid();
+            errThirdPartyPrivateAPIClientInvalid();
         }
 
         return [
