@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d6c841d7bf6483b37c4c30390e2539c",
+    "content-hash": "ae13e228e3b515cfd13426e0ad9830ea",
     "packages": [
         {
             "name": "brick/math",
@@ -912,6 +912,55 @@
                 "source": "https://github.com/globalxtreme/php-storage/tree/1.0.17"
             },
             "time": "2024-05-11T04:39:59+00:00"
+        },
+        {
+            "name": "globalxtreme/private-api",
+            "version": "v1.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:globalxtreme/private-api.git",
+                "reference": "2137ffc1878aa4371b8036d1716a125dfae8089e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/globalxtreme/private-api/zipball/2137ffc1878aa4371b8036d1716a125dfae8089e",
+                "reference": "2137ffc1878aa4371b8036d1716a125dfae8089e",
+                "shasum": ""
+            },
+            "require": {
+                "globalxtreme/response": "^2.0",
+                "guzzlehttp/guzzle": "^7.0|^7.5",
+                "illuminate/support": "^9.0|^10.0|^11.0",
+                "php": "^8.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "GlobalXtreme\\PrivateAPI\\PrivateAPIServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GlobalXtreme\\PrivateAPI\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yuswa",
+                    "email": "yuswa98@gmail.com"
+                }
+            ],
+            "description": "GlobalXtreme Private API Package for Microservice Communication",
+            "support": {
+                "source": "https://github.com/globalxtreme/private-api/tree/v1.1.0",
+                "issues": "https://github.com/globalxtreme/private-api/issues"
+            },
+            "time": "2025-06-05T05:11:36+00:00"
         },
         {
             "name": "globalxtreme/rabbitmq",
@@ -7870,16 +7919,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.5.21",
+            "version": "11.5.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d565e2cdc21a7db9dc6c399c1fc2083b8010f289"
+                "reference": "4cd72faaa8f811e4cc63040cba167757660a5538"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d565e2cdc21a7db9dc6c399c1fc2083b8010f289",
-                "reference": "d565e2cdc21a7db9dc6c399c1fc2083b8010f289",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/4cd72faaa8f811e4cc63040cba167757660a5538",
+                "reference": "4cd72faaa8f811e4cc63040cba167757660a5538",
                 "shasum": ""
             },
             "require": {
@@ -7951,7 +8000,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.21"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.5.22"
             },
             "funding": [
                 {
@@ -7975,7 +8024,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-21T12:35:00+00:00"
+            "time": "2025-06-06T02:48:05+00:00"
         },
         {
             "name": "sebastian/cli-parser",
