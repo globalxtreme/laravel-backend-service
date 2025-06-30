@@ -6,7 +6,7 @@ use GlobalXtreme\RabbitMQ\Models\GXRabbitMessage;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXRabbitMQConsumerContract;
 use Illuminate\Support\Facades\Log;
 
-class TestingConsumer implements GXRabbitMQConsumerContract
+class TestingProcessedConsumer implements GXRabbitMQConsumerContract
 {
     /**
      * The service for handle process of message
@@ -17,7 +17,7 @@ class TestingConsumer implements GXRabbitMQConsumerContract
      */
     public static function consume(array|string $data)
     {
-        Log::info("consumer");
+        Log::info("consumer processed");
         Log::info($data);
         return [
             'testing' => 'This testing message'

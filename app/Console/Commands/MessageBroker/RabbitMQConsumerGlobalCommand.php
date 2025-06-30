@@ -4,6 +4,7 @@ namespace App\Console\Commands\MessageBroker;
 
 use App\Services\Constant\Global\RabbitMQConstant;
 use App\Services\MessageBroker\TestingConsumer;
+use App\Services\MessageBroker\TestingProcessedConsumer;
 use GlobalXtreme\RabbitMQ\Constant\GXRabbitConnectionType;
 use GlobalXtreme\RabbitMQ\Queue\GXRabbitMQConsumer;
 use Illuminate\Console\Command;
@@ -39,11 +40,12 @@ class RabbitMQConsumerGlobalCommand extends Command
 
         $consumer->setQueues([
             RabbitMQConstant::SERVICE_DOMAIN_FEATURE_ACTION_QUEUE => TestingConsumer::class,
+            RabbitMQConstant::SERVICE_DOMAIN_FEATURE_ACTION_PROCESSED_QUEUE => TestingProcessedConsumer::class,
         ]);
 
         $connection = GXRabbitConnectionType::GLOBAL;
         $this->line("\n<bg=blue>[GX-Info]</> Processing consumer for the <options=bold>[$connection]</> connection.\n");
 
-        $consumer->consume($connection);
+        $consumer->rabbitmqConsume($connection);
     }
 }

@@ -42,6 +42,6 @@ class RabbitMQConsumerLocalCommand extends Command
         $connection = GXRabbitConnectionType::LOCAL;
         $this->line("\n<bg=blue>[GX-Info]</> Processing consumer for the <options=bold>[$connection]</> connection.\n");
 
-        $consumer->consume($connection);
+        $consumer->rabbitmqConsume($connection);
     }
 }
