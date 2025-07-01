@@ -16,12 +16,12 @@ class TestCommand extends Command
 
     public function handle()
     {
-//        GXRabbitMQPublish::dispatch(['message' => 'Hello World!'])
-//            ->onConnection(GXRabbitConnectionType::GLOBAL)
-//            ->onExchange(RabbitMQConstant::SERVICE_DOMAIN_FEATURE_ACTION_EXCHANGE)
-//            ->onSender(1, "messages")
-//            ->onDelivery('services', true);
-//
+        GXRabbitMQPublish::dispatch(['message' => 'Hello World!'])
+            ->onConnection(GXRabbitConnectionType::GLOBAL)
+            ->onExchange(RabbitMQConstant::SERVICE_DOMAIN_FEATURE_ACTION_EXCHANGE)
+            ->onSender(1, "messages")
+            ->onDelivery('services');
+
 //        $consumer = new GXRabbitMQConsumer();
 //        $message = $consumer->prepareManualConsume(1644, 1);
 //        $consumer->successConsuming($message, ["testing" => 'success']);
