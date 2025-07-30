@@ -7,7 +7,7 @@ use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowConsumerContract;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowForwardPayload;
 use Illuminate\Support\Facades\Log;
 
-class TestingConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflowForwardPayload
+class TestingSecondConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflowForwardPayload
 {
     /**
      * @param GXRabbitAsyncWorkflowStep $workflowStep
@@ -23,11 +23,11 @@ class TestingConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflo
      */
     public function consume()
     {
-        Log::info("first consumer");
+        Log::info("second consumer");
         Log::info($this->payload);
 
         $result = [
-            'name' => 'Second message',
+            'name' => 'Third message',
             'subs' => ['testing 1', 'testing 2', 'testing 3', 'testing 4', 'testing 5'],
         ];
 
@@ -41,7 +41,6 @@ class TestingConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflo
      */
     public function response($data = null)
     {
-        Log::info("consumer response testing first step");
         $realData = ["success" => true, "message" => 'default'];
         if ($data) {
             $realData = $data;
@@ -56,15 +55,12 @@ class TestingConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflo
     public function forwardPayload()
     {
         return [
-            'service.customer.convert.async-workflow-3' => [
-                'action' => 'testing forward message for step 3'
-            ],
             'service.customer.convert.async-workflow-4' => [
-                'action' => 'testing forward message for step 4',
                 'status' => [
-                    'id' => 1,
-                    'name' => 'testing',
-                    'types' => ['type 1', 'type 2'],
+                    'subs' => [
+                        ['name' => 'sub 1'],
+                        ['name' => 'sub 2'],
+                    ],
                 ]
             ],
         ];
