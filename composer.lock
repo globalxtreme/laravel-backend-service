@@ -968,12 +968,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/globalxtreme/rabbitmq.git",
-                "reference": "c61c5a14405d284788d72130f43fff525b77064c"
+                "reference": "7cb6f2257f10b4cdfaa6c358fc7c155e86502aba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/globalxtreme/rabbitmq/zipball/c61c5a14405d284788d72130f43fff525b77064c",
-                "reference": "c61c5a14405d284788d72130f43fff525b77064c",
+                "url": "https://api.github.com/repos/globalxtreme/rabbitmq/zipball/7cb6f2257f10b4cdfaa6c358fc7c155e86502aba",
+                "reference": "7cb6f2257f10b4cdfaa6c358fc7c155e86502aba",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1010,7 @@
                 "source": "https://github.com/globalxtreme/rabbitmq/tree/2.1.10",
                 "issues": "https://github.com/globalxtreme/rabbitmq/issues"
             },
-            "time": "2025-07-30T03:12:12+00:00"
+            "time": "2025-07-30T04:00:53+00:00"
         },
         {
             "name": "globalxtreme/response",
