@@ -2,6 +2,7 @@
 
 namespace App\Services\MessageBroker;
 
+use GlobalXtreme\RabbitMQ\Models\GXRabbitAsyncWorkflow;
 use GlobalXtreme\RabbitMQ\Models\GXRabbitAsyncWorkflowStep;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowConsumerContract;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowForwardPayload;
@@ -10,10 +11,13 @@ use Illuminate\Support\Facades\Log;
 class TestingSecondConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflowForwardPayload
 {
     /**
+     * @param GXRabbitAsyncWorkflow $workflow
      * @param GXRabbitAsyncWorkflowStep $workflowStep
      * @param array $payload
      */
-    public function __construct(protected GXRabbitAsyncWorkflowStep $workflowStep, protected array $payload)
+    public function __construct(protected GXRabbitAsyncWorkflow     $workflow,
+                                protected GXRabbitAsyncWorkflowStep $workflowStep,
+                                protected array                     $payload)
     {
     }
 
@@ -24,6 +28,8 @@ class TestingSecondConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncW
     public function consume()
     {
         Log::info("second consumer");
+        Log::info($this->workflow->referenceId);
+        Log::info($this->workflow->referenceType);
         Log::info($this->payload);
 
         $result = [

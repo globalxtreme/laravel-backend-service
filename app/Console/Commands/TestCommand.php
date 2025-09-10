@@ -20,25 +20,6 @@ class TestCommand extends Command
     protected $signature = 'dev-test';
     protected $description = '';
 
-    private function mergeForwardPayloadToPayload($forwardPayload, &$realPayload)
-    {
-        if (!$forwardPayload) {
-            return;
-        }
-
-        foreach ($forwardPayload ?: [] as $fKey => $fPayload) {
-            if (is_array($fPayload)) {
-                if (!isset($realPayload[$fKey]) || !is_array($realPayload[$fKey])) {
-                    $realPayload[$fKey] = [];
-                }
-
-                $this->mergeForwardPayloadToPayload($fPayload, $realPayload[$fKey]);
-            } else {
-                $realPayload[$fKey] = $fPayload;
-            }
-        }
-    }
-
     public function handle()
     {
 //        $redis = new Redis();
@@ -63,10 +44,11 @@ class TestCommand extends Command
             '1',
             'prospect_service_locations',
         );
+        $workflow->setCreatedBy("ec088108-cb01-43b8-9e86-9c6236e45a20", "Yuswa");
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
-            'service-1.feature.action.async-workflow',
+            'service.customer.convert.async-workflow-1',
             'Service 1 async workflow consumer',
             [
                 'name' => 'First message',
@@ -76,20 +58,20 @@ class TestCommand extends Command
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
-            'service-2.feature.action.async-workflow',
+            'service.customer.convert.async-workflow-2',
             'Service 2 async workflow consumer',
         ));
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
-            'service-3.feature.action.async-workflow',
+            'service.customer.convert.async-workflow-3',
             'Service 3 async workflow consumer',
         ));
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
-            'service-4.feature.action.async-workflow',
-            'Service 4 async workflow consumer',
+            'service.customer.convert.async-workflow-4',
+            'Service 4 async workflow consumer'
         ));
 
         $workflow->push();

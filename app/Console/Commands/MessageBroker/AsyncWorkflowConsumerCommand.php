@@ -5,7 +5,8 @@ namespace App\Console\Commands\MessageBroker;
 use App\Services\Constant\Global\RabbitMQConstant;
 use App\Services\MessageBroker\TestingConsumer;
 use App\Services\MessageBroker\TestingForthConsumer;
-use App\Services\MessageBroker\TestingProcessedConsumer;
+use App\Services\MessageBroker\TestingForthOneConsumer;
+use App\Services\MessageBroker\TestingForthTwoConsumer;
 use App\Services\MessageBroker\TestingSecondConsumer;
 use App\Services\MessageBroker\TestingThirdConsumer;
 use GlobalXtreme\RabbitMQ\Constant\GXRabbitConnectionType;
@@ -43,6 +44,8 @@ class AsyncWorkflowConsumerCommand extends Command
             'service.customer.convert.async-workflow-2' => TestingSecondConsumer::class,
             'service.customer.convert.async-workflow-3' => TestingThirdConsumer::class,
             'service.customer.convert.async-workflow-4' => TestingForthConsumer::class,
+            'service.customer.convert.async-workflow-4-1' => TestingForthOneConsumer::class,
+            'service.customer.convert.async-workflow-4-2' => TestingForthTwoConsumer::class,
         ]);
 
         $this->line("\n<bg=blue>[GX-Info]</> Processing consumer for the <options=bold>[async-workflow]</> connection.\n");
