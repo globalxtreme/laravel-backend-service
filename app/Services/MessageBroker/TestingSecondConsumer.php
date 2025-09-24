@@ -27,6 +27,7 @@ class TestingSecondConsumer implements GXAsyncWorkflowConsumerContract, GXAsyncW
      */
     public function consume()
     {
+        errUnableToUploadFile("Testing php rabbitmq error");
         Log::info("second consumer");
         Log::info($this->workflow->referenceId);
         Log::info($this->workflow->referenceType);

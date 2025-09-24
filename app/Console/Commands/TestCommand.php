@@ -22,29 +22,15 @@ class TestCommand extends Command
 
     public function handle()
     {
-//        $redis = new Redis();
-//        $redis->connect('10.10.1.181', 6379);
-//        $result = $redis->publish("temporary.message-broker.async-workflow.monitoring-customer.save-1", json_encode(['status' => 'native test']));
-//        var_dump($result);
-
-//        $client = Redis::connection('async-workflow')->client();
-//        $client->connect(env('REDIS_ASYNC_WORKFLOW_HOST'), env('REDIS_ASYNC_WORKFLOW_PORT'));
-//        dd($client->publish("ws-channel.async-workflow.monitoring:customer.save-1", json_encode([
-//            "event" => "monitoring",
-//            "error" => "",
-//            "result" => ["status" => "success"],
-//        ])));
-
-
-//        $listServiceLocations[] = "sd";
-//        $this->info(dechex(123456));
-
         $workflow = new GXAsyncWorkflowPublish(
             'customer.save',
             '1',
             'prospect_service_locations',
         );
         $workflow->setCreatedBy("ec088108-cb01-43b8-9e86-9c6236e45a20", "Yuswa");
+        $workflow->setDescription("Testing rabbitmq php description");
+        $workflow->setSuccessMessage("Testing php rabbitmq success message");
+        $workflow->seterrorMessage("Testing php rabbitmq error message");
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
@@ -75,24 +61,5 @@ class TestCommand extends Command
         ));
 
         $workflow->push();
-
-//        $workflow = new GXAsyncWorkflowPublish();
-//        $workflow->pushWorkflowMessage(3, 'service-1.feature.action.async-workflow', [
-//                'name' => 'First message',
-//                'subs' => ['testing 1', 'testing 2', 'testing 3', 'testing 4', 'testing 5'],
-//            ]);
-
-//        $consumer = TestingThirdConsumer::response(new GXRabbitAsyncWorkflowStep(), [], ['status' => true, 'message' => 'Customer response']);
-//        Log::info($consumer);
-
-//        GXRabbitMQPublish::dispatch(['message' => 'Hello World!'])
-//            ->onConnection(GXRabbitConnectionType::GLOBAL)
-//            ->onExchange(RabbitMQConstant::SERVICE_DOMAIN_FEATURE_ACTION_EXCHANGE)
-//            ->onSender(1, "messages")
-//            ->onDelivery('services');
-
-//        $consumer = new GXRabbitMQConsumer();
-//        $message = $consumer->prepareManualConsume(1644, 1);
-//        $consumer->successConsuming($message, ["testing" => 'success']);
     }
 }
