@@ -4,11 +4,11 @@ namespace App\Console\Commands\MessageBroker;
 
 use App\Services\Constant\Global\RabbitMQConstant;
 use App\Services\MessageBroker\TestingConsumer;
-use App\Services\MessageBroker\TestingForthConsumer;
-use App\Services\MessageBroker\TestingForthOneConsumer;
-use App\Services\MessageBroker\TestingForthTwoConsumer;
-use App\Services\MessageBroker\TestingSecondConsumer;
-use App\Services\MessageBroker\TestingThirdConsumer;
+use App\Services\MessageBroker\TestingForthExecutor;
+use App\Services\MessageBroker\TestingForthOneExecutor;
+use App\Services\MessageBroker\TestingForthTwoExecutor;
+use App\Services\MessageBroker\TestingSecondExecutor;
+use App\Services\MessageBroker\TestingThirdExecutor;
 use GlobalXtreme\RabbitMQ\Constant\GXRabbitConnectionType;
 use GlobalXtreme\RabbitMQ\Queue\GXAsyncWorkflowConsumer;
 use GlobalXtreme\RabbitMQ\Queue\GXRabbitMQConsumer;
@@ -41,11 +41,11 @@ class AsyncWorkflowConsumerCommand extends Command
 
         $consumer->setQueues([
             'service.customer.convert.async-workflow-1' => TestingConsumer::class,
-            'service.customer.convert.async-workflow-2' => TestingSecondConsumer::class,
-            'service.customer.convert.async-workflow-3' => TestingThirdConsumer::class,
-            'service.customer.convert.async-workflow-4' => TestingForthConsumer::class,
-            'service.customer.convert.async-workflow-4-1' => TestingForthOneConsumer::class,
-            'service.customer.convert.async-workflow-4-2' => TestingForthTwoConsumer::class,
+            'service.customer.convert.async-workflow-2' => TestingSecondExecutor::class,
+            'service.customer.convert.async-workflow-3' => TestingThirdExecutor::class,
+            'service.customer.convert.async-workflow-4' => TestingForthExecutor::class,
+            'service.customer.convert.async-workflow-4-1' => TestingForthOneExecutor::class,
+            'service.customer.convert.async-workflow-4-2' => TestingForthTwoExecutor::class,
         ]);
 
         $this->line("\n<bg=blue>[GX-Info]</> Processing consumer for the <options=bold>[async-workflow]</> connection.\n");

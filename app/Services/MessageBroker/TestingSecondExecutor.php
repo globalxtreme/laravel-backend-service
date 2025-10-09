@@ -5,9 +5,10 @@ namespace App\Services\MessageBroker;
 use GlobalXtreme\RabbitMQ\Models\GXRabbitAsyncWorkflow;
 use GlobalXtreme\RabbitMQ\Models\GXRabbitAsyncWorkflowStep;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowConsumerContract;
+use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowForwardPayload;
 use Illuminate\Support\Facades\Log;
 
-class TestingForthOneConsumer implements GXAsyncWorkflowConsumerContract
+class TestingSecondExecutor implements GXAsyncWorkflowConsumerContract, GXAsyncWorkflowForwardPayload
 {
     /**
      * @param GXRabbitAsyncWorkflow $workflow
@@ -26,13 +27,14 @@ class TestingForthOneConsumer implements GXAsyncWorkflowConsumerContract
      */
     public function consume()
     {
-        Log::info("forth one consumer");
+//        errUnableToUploadFile("Testing php rabbitmq error");
+        Log::info("second consumer");
         Log::info($this->workflow->referenceId);
         Log::info($this->workflow->referenceType);
         Log::info($this->payload);
 
         $result = [
-            'name' => 'Fifth message',
+            'name' => 'Third message',
             'subs' => ['testing 1', 'testing 2', 'testing 3', 'testing 4', 'testing 5'],
         ];
 
@@ -54,4 +56,20 @@ class TestingForthOneConsumer implements GXAsyncWorkflowConsumerContract
         return $realData;
     }
 
+    /**
+     * @return array
+     */
+    public function forwardPayload()
+    {
+        return [
+            'service.customer.convert.async-workflow-4' => [
+                'status' => [
+                    'subs' => [
+                        ['name' => 'sub 1'],
+                        ['name' => 'sub 2'],
+                    ],
+                ]
+            ],
+        ];
+    }
 }

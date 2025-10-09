@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Services\Constant\Global\RabbitMQConstant;
-use App\Services\MessageBroker\TestingThirdConsumer;
+use App\Services\MessageBroker\TestingThirdExecutor;
 use Carbon\Carbon;
 use GlobalXtreme\RabbitMQ\Constant\GXRabbitConnectionType;
 use GlobalXtreme\RabbitMQ\Form\GXAsyncWorkflowForm;
@@ -46,18 +46,27 @@ class TestCommand extends Command
             'services',
             'service.customer.convert.async-workflow-2',
             'Service 2 async workflow consumer',
+            [
+                'forwardInitiator' => ['name' => 'Ini forward payload untuk step 2']
+            ]
         ));
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
             'service.customer.convert.async-workflow-3',
             'Service 3 async workflow consumer',
+            [
+                'forwardInitiator' => ['name' => 'Ini forward payload untuk step 3']
+            ]
         ));
 
         $workflow->onStep(new GXAsyncWorkflowForm(
             'services',
             'service.customer.convert.async-workflow-4',
-            'Service 4 async workflow consumer'
+            'Service 4 async workflow consumer',
+            [
+                'forwardInitiator' => ['name' => 'Ini forward payload untuk step 4']
+            ]
         ));
 
         $workflow->push();

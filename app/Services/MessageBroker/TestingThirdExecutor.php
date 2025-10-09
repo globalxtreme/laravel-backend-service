@@ -7,7 +7,7 @@ use GlobalXtreme\RabbitMQ\Models\GXRabbitAsyncWorkflowStep;
 use GlobalXtreme\RabbitMQ\Queue\Contract\GXAsyncWorkflowConsumerContract;
 use Illuminate\Support\Facades\Log;
 
-class TestingForthTwoConsumer implements GXAsyncWorkflowConsumerContract
+class TestingThirdExecutor implements GXAsyncWorkflowConsumerContract
 {
     /**
      * @param GXRabbitAsyncWorkflow $workflow
@@ -26,13 +26,13 @@ class TestingForthTwoConsumer implements GXAsyncWorkflowConsumerContract
      */
     public function consume()
     {
-        Log::info("forth two consumer");
+        Log::info("third consumer");
         Log::info($this->workflow->referenceId);
         Log::info($this->workflow->referenceType);
         Log::info($this->payload);
 
         $result = [
-            'name' => 'Fifth message',
+            'name' => 'Forth message',
             'subs' => ['testing 1', 'testing 2', 'testing 3', 'testing 4', 'testing 5'],
         ];
 
