@@ -1,16 +1,16 @@
 <?php
 
-namespace App\ThirdParty\Validation\Services;
+namespace App\ThirdParty\PrivateAPI\Services;
 
-use App\ThirdParty\Validation\ServiceValidation;
+use App\ThirdParty\PrivateAPI\PrivateAPI;
 
-class ExampleValidation extends ServiceValidation
+class ExampleService extends PrivateAPI
 {
     // Service name
     const CLIENT = 'example';
 
     // URL
-    const URI = ServiceValidation::URI + [
+    const URI = [
         'CHECK_TESTING' => 'testing/validation',
     ];
 
@@ -20,13 +20,14 @@ class ExampleValidation extends ServiceValidation
     /**
      * @param $payload
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\JsonResponse|null
+     * @throws \ErrorException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public static function testing($payload)
     {
         $url = static::host();
-        $url .= static::URI['BASE'] . static::URI['CHECK_TESTING'];
+        $url .= static::BASE_URL . static::URI['CHECK_TESTING'];
 
         return static::call($url, $payload, 'post');
     }
