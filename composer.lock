@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d6c841d7bf6483b37c4c30390e2539c",
+    "content-hash": "8982daf84e5dba43fd702e95b04ab043",
     "packages": [
         {
             "name": "brick/math",
@@ -821,17 +821,17 @@
             "time": "2023-10-12T05:21:21+00:00"
         },
         {
-            "name": "globalxtreme/parser",
-            "version": "2.0.0",
+            "name": "globalxtreme/lara-core",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/globalxtreme/parser.git",
-                "reference": "aecc71a35e6da998957c17214f6440f4eab3adda"
+                "url": "git@github.com:globalxtreme/lara-core.git",
+                "reference": "5997fa2955df0bfa7e5749a7f9b859030044acc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/globalxtreme/parser/zipball/aecc71a35e6da998957c17214f6440f4eab3adda",
-                "reference": "aecc71a35e6da998957c17214f6440f4eab3adda",
+                "url": "https://api.github.com/repos/globalxtreme/lara-core/zipball/5997fa2955df0bfa7e5749a7f9b859030044acc0",
+                "reference": "5997fa2955df0bfa7e5749a7f9b859030044acc0",
                 "shasum": ""
             },
             "require": {
@@ -843,16 +843,19 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "GlobalXtreme\\Parser\\ParserServiceProvider"
+                        "GlobalXtreme\\Core\\CoreServiceProvider"
                     ]
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "GlobalXtreme\\Parser\\": "src/"
-                }
+                    "GlobalXtreme\\Core\\": "src/"
+                },
+                "files": [
+                    "src/Misc/helper.php",
+                    "src/Misc/response.php"
+                ]
             },
-            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -862,32 +865,32 @@
                     "email": "yuswa98@gmail.com"
                 }
             ],
-            "description": "GlobalXtreme Parser Pattern",
+            "description": "GlobalXtreme Laravel core package",
             "support": {
-                "issues": "https://github.com/globalxtreme/parser/issues",
-                "source": "https://github.com/globalxtreme/parser/tree/2.0.0"
+                "source": "https://github.com/globalxtreme/lara-core/tree/1.0.2",
+                "issues": "https://github.com/globalxtreme/lara-core/issues"
             },
-            "time": "2024-05-11T02:40:44+00:00"
+            "time": "2026-06-09T04:33:20+00:00"
         },
         {
             "name": "globalxtreme/php-storage",
-            "version": "1.0.17",
+            "version": "2.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/globalxtreme/php-storage.git",
-                "reference": "d863efe9332629957b05386273d0e796d4179fc7"
+                "reference": "0ed60e80e7e357a198e00a619add0efd872c3d4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/globalxtreme/php-storage/zipball/d863efe9332629957b05386273d0e796d4179fc7",
-                "reference": "d863efe9332629957b05386273d0e796d4179fc7",
+                "url": "https://api.github.com/repos/globalxtreme/php-storage/zipball/0ed60e80e7e357a198e00a619add0efd872c3d4d",
+                "reference": "0ed60e80e7e357a198e00a619add0efd872c3d4d",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/guzzle": "^5.0|^6.0|^7.0|^7.5|^7.8",
-                "illuminate/support": "^5.0|^6.0.|^7.0.|^8.0.|^9.0|^10.0|^11.0",
-                "php": "7.*|8.*",
-                "symfony/http-foundation": "^v5.0|v6.0.*|v6.1.*|v6.2.*|v7.0.*|v7.1.*",
+                "guzzlehttp/guzzle": "^7.5|^7.8|^7.9",
+                "illuminate/support": "^8|^9|^10|^11|^12",
+                "php": "8.*",
+                "symfony/http-foundation": "^5.3|^6|^7",
                 "vlucas/phpdotenv": "^4.0|5.*"
             },
             "type": "library",
@@ -909,9 +912,9 @@
             "description": "GlobalXtreme Storage Package for PHP Language",
             "support": {
                 "issues": "https://github.com/globalxtreme/php-storage/issues",
-                "source": "https://github.com/globalxtreme/php-storage/tree/1.0.17"
+                "source": "https://github.com/globalxtreme/php-storage/tree/2.0.7"
             },
-            "time": "2024-05-11T04:39:59+00:00"
+            "time": "2025-10-11T01:52:26+00:00"
         },
         {
             "name": "globalxtreme/rabbitmq",
@@ -962,108 +965,6 @@
                 "source": "https://github.com/globalxtreme/rabbitmq/tree/2.1.5"
             },
             "time": "2025-01-23T04:41:22+00:00"
-        },
-        {
-            "name": "globalxtreme/response",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/globalxtreme/response.git",
-                "reference": "c02584ce4023b470c26f435c6e0e3b4ebe52adcd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/globalxtreme/response/zipball/c02584ce4023b470c26f435c6e0e3b4ebe52adcd",
-                "reference": "c02584ce4023b470c26f435c6e0e3b4ebe52adcd",
-                "shasum": ""
-            },
-            "require": {
-                "globalxtreme/parser": "^2.0",
-                "illuminate/console": "^8.0|^9.0|^10.0|^11.0",
-                "illuminate/support": "^8.83|^9.0|^10.0|^11.0",
-                "php": "8.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "GlobalXtreme\\Response\\ResponseServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/Misc/helpers.php",
-                    "src/Misc/responses.php"
-                ],
-                "psr-4": {
-                    "GlobalXtreme\\Response\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yuswa",
-                    "email": "yuswa98@gmail.com"
-                }
-            ],
-            "description": "GlobalXtreme Response Pattern",
-            "support": {
-                "issues": "https://github.com/globalxtreme/response/issues",
-                "source": "https://github.com/globalxtreme/response/tree/2.0.3"
-            },
-            "time": "2025-04-24T04:21:04+00:00"
-        },
-        {
-            "name": "globalxtreme/validation",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/globalxtreme/validation.git",
-                "reference": "ad01ae1a5b82c83fb5cb5df419d23857b8c3c680"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/globalxtreme/validation/zipball/ad01ae1a5b82c83fb5cb5df419d23857b8c3c680",
-                "reference": "ad01ae1a5b82c83fb5cb5df419d23857b8c3c680",
-                "shasum": ""
-            },
-            "require": {
-                "globalxtreme/response": "^v2.0",
-                "php": "8.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "GlobalXtreme\\Validation\\ValidationServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "GlobalXtreme\\Validation\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Yuswa",
-                    "email": "yuswa98@gmail.com"
-                }
-            ],
-            "description": "GlobalXtreme Validation Pattern",
-            "support": {
-                "issues": "https://github.com/globalxtreme/validation/issues",
-                "source": "https://github.com/globalxtreme/validation/tree/v1.1.2"
-            },
-            "time": "2024-06-10T10:24:40+00:00"
         },
         {
             "name": "graham-campbell/result-type",
